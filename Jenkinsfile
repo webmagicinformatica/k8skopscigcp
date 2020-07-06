@@ -24,16 +24,19 @@ pipeline {
             steps { 
                 sh './kopsdownload.sh' 
             }
+        }
 
         stage('Download kubectl') { 
             steps { 
                 sh './kubectldownload.sh' 
             }
+        }
         
         stage('Set Kops config') { 
             steps { 
                 sh 'kops create cluster simple.k8s.local --zones us-central1-a --state ${KOPS_STATE_STORE}/ --project=${PROJECT}' 
             }
+        }
 
         stage('Apply Kops Config') { 
             steps { 
