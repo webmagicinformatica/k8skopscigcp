@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Download SSH Key') { 
             steps { 
-                sh 'gsutil cp $sshkey /root/.ssh/' 
+                sh 'gsutil -m cp -R $sshkey /root/.ssh/' 
             }
         }
 
